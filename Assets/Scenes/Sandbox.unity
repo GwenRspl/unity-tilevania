@@ -137,7 +137,7 @@ GameObject:
   - component: {fileID: 63128996}
   - component: {fileID: 63128995}
   - component: {fileID: 63128994}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Foreground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1291,24 +1291,6 @@ TilemapCollider2D:
   m_Offset: {x: 0, y: 0}
   m_MaximumTileChangeCount: 1000
   m_ExtrusionFactor: 0.00001
---- !u!1 &104431590 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7734878503826016278, guid: 1f7eba0effa6abe4eb559a0c02d9c52b, type: 3}
-  m_PrefabInstance: {fileID: 7734878503927265264}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &104431591
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 104431590}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f7c89fc1d4ab91748851c00f04126b53, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  runSpeed: 5
 --- !u!1 &158142266
 GameObject:
   m_ObjectHideFlags: 0
