@@ -7,6 +7,7 @@ public class Player : MonoBehaviour {
     //Config
     [SerializeField] float runSpeed = 5f;
     [SerializeField] float jumpSpeed = 20f;
+    [SerializeField] float climbSpeed = 5f;
 
     //State
     bool isAlive = true;
@@ -15,17 +16,20 @@ public class Player : MonoBehaviour {
     private Rigidbody2D rigidBody;
     private Animator animator;
     private Collider2D collider;
+    private float gravityScaleAtStart;
 
     private void Start() {
         this.rigidBody = GetComponent<Rigidbody2D>();
         this.animator = GetComponent<Animator>();
         this.collider = GetComponent<Collider2D>();
+        this.gravityScaleAtStart = this.rigidBody.gravityScale;
     }
 
     private void Update() {
         Run();
         FlipSprite();
         Jump();
+        ClimbLadder();
     }
 
     private void Run() {
@@ -36,6 +40,22 @@ public class Player : MonoBehaviour {
         bool playerHasHorizontalSpeed = Mathf.Abs(this.rigidBody.velocity.x) > Mathf.Epsilon;
         this.animator.SetBool("running", playerHasHorizontalSpeed);
 
+    }
+
+    private void ClimbLadder() {
+        if (!this.collider.IsTouchingLayers(LayerMask.GetMask("Climbing"))) {
+            this.animator.SetBool("climbing", false);
+            this.rigidBody.gravityScale = this.gravityScaleAtStart;
+            return;
+        }
+
+        float controlThrow = Input.GetAxis("Vertical");
+        Vector2 climbVelocity = new Vector2(this.rigidBody.velocity.x, controlThrow * this.climbSpeed);
+        this.rigidBody.velocity = climbVelocity;
+        this.rigidBody.gravityScale = 0;
+
+        bool playerHasVerticalSpeed = Mathf.Abs(this.rigidBody.velocity.y) > Mathf.Epsilon;
+        this.animator.SetBool("climbing", playerHasVerticalSpeed);
     }
 
     private void Jump() {
