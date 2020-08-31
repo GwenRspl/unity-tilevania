@@ -15,13 +15,15 @@ public class Player : MonoBehaviour {
     //Cache
     private Rigidbody2D rigidBody;
     private Animator animator;
-    private Collider2D collider;
+    private CapsuleCollider2D bodyCollider;
+    private BoxCollider2D feetCollider;
     private float gravityScaleAtStart;
 
     private void Start() {
         this.rigidBody = GetComponent<Rigidbody2D>();
         this.animator = GetComponent<Animator>();
-        this.collider = GetComponent<Collider2D>();
+        this.bodyCollider = GetComponent<CapsuleCollider2D>();
+        this.feetCollider = GetComponent<BoxCollider2D>();
         this.gravityScaleAtStart = this.rigidBody.gravityScale;
     }
 
@@ -43,7 +45,7 @@ public class Player : MonoBehaviour {
     }
 
     private void ClimbLadder() {
-        if (!this.collider.IsTouchingLayers(LayerMask.GetMask("Climbing"))) {
+        if (!this.feetCollider.IsTouchingLayers(LayerMask.GetMask("Climbing"))) {
             this.animator.SetBool("climbing", false);
             this.rigidBody.gravityScale = this.gravityScaleAtStart;
             return;
@@ -59,7 +61,7 @@ public class Player : MonoBehaviour {
     }
 
     private void Jump() {
-        if (!this.collider.IsTouchingLayers(LayerMask.GetMask("Ground"))) {
+        if (!this.feetCollider.IsTouchingLayers(LayerMask.GetMask("Ground"))) {
             return;
         }
 
