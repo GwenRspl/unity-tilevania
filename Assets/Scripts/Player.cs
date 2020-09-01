@@ -8,6 +8,7 @@ public class Player : MonoBehaviour {
     [SerializeField] float runSpeed = 5f;
     [SerializeField] float jumpSpeed = 20f;
     [SerializeField] float climbSpeed = 5f;
+    [SerializeField] Vector2 deathKick = new Vector2(250f, 250f);
 
     //State
     bool isAlive = true;
@@ -28,10 +29,14 @@ public class Player : MonoBehaviour {
     }
 
     private void Update() {
-        Run();
-        FlipSprite();
-        Jump();
-        ClimbLadder();
+        if (this.isAlive) {
+            Run();
+            FlipSprite();
+            Jump();
+            ClimbLadder();
+            Die();
+        }
+
     }
 
     private void Run() {
@@ -75,6 +80,14 @@ public class Player : MonoBehaviour {
         bool playerHasHorizontalSpeed = Mathf.Abs(this.rigidBody.velocity.x) > Mathf.Epsilon;
         if (playerHasHorizontalSpeed) {
             this.transform.localScale = new Vector2(Mathf.Sign(this.rigidBody.velocity.x), 1f);
+        }
+    }
+
+    private void Die() {
+        if (this.bodyCollider.IsTouchingLayers(LayerMask.GetMask("Enemy"))) {
+            this.animator.SetTrigger("dying");
+            this.rigidBody.velocity = this.deathKick;
+            this.isAlive = false;
         }
     }
 
