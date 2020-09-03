@@ -4578,6 +4578,50 @@ TilemapCollider2D:
   m_Offset: {x: 0, y: 0}
   m_MaximumTileChangeCount: 1000
   m_ExtrusionFactor: 0.00001
+--- !u!1 &1287201248
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1287201250}
+  - component: {fileID: 1287201249}
+  m_Layer: 0
+  m_Name: GameSession
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1287201249
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1287201248}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4558434c66ea2c43850387cee6913c8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerLives: 3
+--- !u!4 &1287201250
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1287201248}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1371931544
 GameObject:
   m_ObjectHideFlags: 0
@@ -9565,11 +9609,11 @@ PrefabInstance:
       objectReference: {fileID: 104431596}
     - target: {fileID: 3239072817871262519, guid: 5b614d37d236ea7418da3a056ee4065e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -9.314156
+      value: -9.31008
       objectReference: {fileID: 0}
     - target: {fileID: 3239072817871262519, guid: 5b614d37d236ea7418da3a056ee4065e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.5718447
+      value: -0.5719186
       objectReference: {fileID: 0}
     - target: {fileID: 3239072817871262664, guid: 5b614d37d236ea7418da3a056ee4065e, type: 3}
       propertyPath: orthographic size
